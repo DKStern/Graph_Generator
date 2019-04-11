@@ -81,11 +81,19 @@ namespace GraphGenerator
         {
             using (StreamWriter sw = new StreamWriter("Output.txt"))
             {
+                sw.WriteLine(N);
                 for (int i=0;i<N;i++)
                 {
+                    var str = "";
                     for (int j = 0; j < N; j++)
-                        sw.Write(Matrix[i, j].ToString("0.000") + ' ');
-                    sw.WriteLine();
+                    {
+                        if (j != N - 1)
+                            str += Matrix[i, j].ToString("0.000") + ' ';
+                        else
+                            str += Matrix[i, j].ToString("0.000");
+                    }
+                    str = str.Replace(',', '.');
+                    sw.WriteLine(str);
                 }
             }
         }
